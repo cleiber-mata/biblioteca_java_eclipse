@@ -1,4 +1,4 @@
-package Biblioteca;
+package modelo;
 
 public class Livro {
 	private String titulo;
@@ -11,7 +11,11 @@ public class Livro {
 		return titulo;
 	}
 	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+		if (titulo.isEmpty()) {
+			System.out.println("Erro: O título não pode ser vazio");
+		} else {
+			this.titulo = titulo;
+		}
 	}
 	public String getAutor() {
 		return autor;
@@ -23,7 +27,11 @@ public class Livro {
 		return ano;
 	}
 	public void setAno(int ano) {
+		if (ano <= 1850) {
+			System.out.println("Digite um ano valido.");
+		} else {
 		this.ano = ano;
+		}
 	}
 	public boolean isEmprestado() {
 		return emprestado;
