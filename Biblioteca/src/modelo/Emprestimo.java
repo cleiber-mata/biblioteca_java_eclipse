@@ -6,7 +6,10 @@ import java.time.LocalDate;
  * Representa o empréstimo de um livro por um usuário no sistema da biblioteca.
  * Modela a associação entre as classes Usuario e Livro, gerenciando o ciclo de
  * vida da transação e garantindo a consistência dos estados dos objetos
- * envolvidos. * @author Seu Nome / Grupo
+ * envolvidos. 
+ * @author
+ * 
+ * 
  */
 public class Emprestimo {
 

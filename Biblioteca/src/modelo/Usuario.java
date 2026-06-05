@@ -1,6 +1,8 @@
 package modelo;
 
 public class Usuario {
+	private static int proximoId = 1;
+	private int idUsuario;
 	private String nome;
 	private String cpf;
 	private String email;
@@ -8,12 +10,31 @@ public class Usuario {
 	private String dataNascimento;
 
 	public Usuario(String nome, String cpf, String email, String telefone, String dataNascimento) {
-
+		// Validação rigorosa contra campos em branco ou cheios de espaços
+				if (nome == null || nome.trim().isEmpty()) {
+					throw new IllegalArgumentException("Erro: O nome do usuário não pode ser vazio.");
+				}
+				if (cpf == null || cpf.trim().isEmpty()) {
+					throw new IllegalArgumentException("Erro: O CPF do usuário não pode ser vazio.");
+				}
+		this.idUsuario = proximoId++;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.telefone = telefone;
 		this.dataNascimento = dataNascimento;
+	}
+	
+	@Override
+	public String toString() {
+	    return String.format(
+	        "ID: %-10s | Nome: %-30s | CPF: %-14s | Email: %-30s | Telefone: %-15s",
+	        idUsuario, nome, cpf, email, telefone
+	    );
+	}
+	
+	public int getIdUsuario() {
+		return idUsuario;
 	}
 
 	public String getNome() {
@@ -70,5 +91,9 @@ public class Usuario {
 
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+	
+	public String getTipoUsuario() {
+		return "Usuário";
 	}
 }
