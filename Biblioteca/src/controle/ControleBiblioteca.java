@@ -69,6 +69,15 @@ public class ControleBiblioteca {
 			System.out.println(livro);
 		}
 	}
+	
+	public Livro buscarLivroPorId(int idLivro) {
+	    for (Livro livro : livros) {
+	        if (livro.getIdLivro() == idLivro) {
+	            return livro;
+	        }
+	    }
+	    return null;
+	}
 
 	public Livro buscarLivroPorIsbn(String isbn) {
 		for (Livro livro : livros) {

@@ -7,7 +7,8 @@ import java.time.LocalDate;
  * o seu estado de disponibilidade para empréstimos.
  */
 public class Livro {
-    
+	private static int proximoId = 1;
+	private int idLivro;
 	private String titulo;
 	private String autor;
 	private String isbn;
@@ -26,6 +27,7 @@ public class Livro {
 	 * por regra de negócio, todo livro inicia sua existência como disponível (false).
 	 */
 	public Livro(String titulo, String autor, String isbn, int ano, String editora) {
+		this.idLivro = proximoId++;
 		this.titulo = titulo;
 		this.autor = autor;
 		this.isbn = isbn;
@@ -36,14 +38,15 @@ public class Livro {
 	
 	@Override
 	public String toString() {
-	    return String.format(
-	        "ISBN: %-15s | Título: %-30s | Autor: %-25s | Ano: %-4d | Status: %s",
-	        isbn,
-	        titulo,
-	        autor,
-	        ano,
-	        emprestado ? "Emprestado" : "Disponível"
-	    );
+		return String.format(
+			    "ID: %-3d | ISBN: %-15s | Título: %-30s | Autor: %-25s | Ano: %-4d | Status: %s",
+			    idLivro, isbn, titulo, autor, ano,
+			    emprestado ? "Emprestado" : "Disponível"
+			);
+	}
+	
+	public int getIdLivro() {
+	    return idLivro;
 	}
 
 	public String getTitulo() {
